@@ -133,7 +133,7 @@
         .append('g')
         .attr('transform', 'translate(' + radius + ',' + radius + ')');
 
-
+      // 데이터를 호출한다. url_for : url를 만드는 함수다. JSON데이터가 그래프로 간다.
       d3.json("{{url_for('get_data',query=query,type=type)}}", function (error, graph) {
         if (error) throw error;
 
@@ -163,20 +163,26 @@
 
         var leaves = tree.leaves();
 
+        // dictioinary{시작,끝,유사도}들의 배열이 link이다 D3에서 path로 변환시킨다.
         var paths = graph.links.map(function (l) {
           var source = leaves.filter(function (d) { return d.data === l.source; })[0];
           var target = leaves.filter(function (d) { return d.data === l.target; })[0];
           return source.path(target);
         });
+
         var temp=[];
+        // link로 만든 패스를 선택하는 코드이다.
         var link = svg.selectAll('.link')
           .data(paths)
           .enter().append('path')
           .attr('class', 'link')
+          // 시밀러리티값에 따라서 굵기값을 바꾸는 코드이다.
           .style('stroke-width', function (d){ similarity = graph_origin.links[0].similarity; source = graph_origin.links[0].source.name; graph_origin.links.shift(); return 8*Math.exp(200*similarity)/Math.exp(200)+0.9;})
+          // 강조하는 코드이다.
           .style('stroke-opacity', function(d){if(d[0].data.name.toString() === '{{query}}'){return 1;};return false;})
           .style('stroke', function(d){if(d[0].data.name.toString() === '{{query}}'){temp.push(d[2].data.name.toString()); return '#9e9e9e';};return false;})
-          .attr('d', function (d) { return line(d) })
+          // line은 좌표값을 넣어주는 함수이다.
+            .attr('d', function (d) { return line(d) })
           .on('mouseover', function (l) {
             link
               .style('stroke', null)
@@ -318,8 +324,12 @@
       }
 
       </script>
+
+
       <script>
+          // g 태그에 event가 발생하게 만드는 코드이다.
         $('g').click(function(e){
+            // 클릭하면 ajax에서 주소를 만들어서, 데이터를 가져온다.
           $.ajax({
               url:'/professor',
               type:'get',
@@ -328,6 +338,7 @@
               data:{
                 name:e.target.id
               },
+              // 클릭하면 사람이름을 가지고 db에서 불러와서 성공하면, 안에 있는 애들이 온다.
               success:function(data){
 
                 $('#name').text(data);
