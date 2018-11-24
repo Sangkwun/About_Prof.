@@ -9,13 +9,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
-<link href='{{url_for("static",filename="style.css")}}' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="{{url_for('static',filename='scripts.js')}}"></script>
+<link href='style.css' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="scripts.js"></script>
 
   <!-- <div class="loading" >
-    ABOUT PROF <span class="circle" style="animationd:keycolor 10s infinite"></span>
+    ABOUT PROF <span class="circle" style="animation:keycolor 10s infinite"></span>
   </div> -->
-  <form action="{{url_for('result')}}" method="get">
     <div class="container-fluid content-box">
         <div class="blank"></div>
         <div class="row content-box1">
@@ -24,9 +23,7 @@
           <div class="col-sm explain">You can search Prof's<br><span style="font-weight:700;color:black;"name="Fcolor" ID="Fcolor">Research field</span> in UNIST</div>
         </div>
         <div class="text-center info">
-
-            <span name="Ccolor" ID="Ccolor"> I am Interested in </span> <span class="search-box" name="Ecolor" ID="Ecolor"><input type="text" placeholder="search" name="query" style="-webkit-appearance:none;"/><span name="Dcolor" ID="Dcolor">.</span></span>
-
+          <span name="Ccolor" ID="Ccolor"> I am Interested in </span> <span class="search-box" name="Ecolor" ID="Ecolor"><input type="text" placeholder="search" name="search" style="-webkit-appearance:none;"/><span name="Dcolor" ID="Dcolor">.</span></span>
         </div>
         <div class="row content-box2">
           <!-- <div class="col-sm checkbox"><span style="font-family:'Poppins', sans-serif; font-weight:400;font-size:15px;"><span id="prof" herf="#" class="prof" style="background:transparent; border:0;">Prof</span><span style="font-weight:400; color:gray;"> | </span><sapn id="keyword" herf="#" class="keyword">Keywords</span></span></div> -->
@@ -38,8 +35,8 @@
             </span>
             <span><input type="button" value="Keywords" onclick="end()"  class="keywords" style="font-family:'Poppins', sans-serif; font-weight:400;font-size:15px;"/>
             </span>
-          </div><input type="hidden" name="type" id="type" value="professor"/><input type="submit" style="display:none;"/>
-          </form>
+          </div>
+
           <div class="col-sm"></div>
           <div class="col-sm about">
             <span style="font-family:'Poppins', sans-serif; font-weight:400;font-size:20px;color:#686a6b;">About<span style="color:#f6c431;font-family:'Poppins', sans-serif; font-weight:800; font-size:20px;animation:keycolor-dot 10s infinite">.</span>
