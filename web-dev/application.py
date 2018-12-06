@@ -23,7 +23,6 @@ def result():
     query = request.args.get('query')
     # 검색 화면에 따라서 달라지는 교수님인가 키워드인가
     type = request.args.get('type')
-    print(type,query)
     # render_template 페이지화면을 호출한다, 쿼리와 타입을 포함하여
     return render_template('result.html', query=query, type=type)
 
