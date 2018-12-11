@@ -1,4 +1,4 @@
-yedvectors import KeyedVectors
+from gensim.models.keyedvectors import KeyedVectors
 
 finalmodel = 'finalmodel'
 model = KeyedVectors.load_word2vec_format(finalmodel, binary=True)
